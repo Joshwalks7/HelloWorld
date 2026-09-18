@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        * {
+            font-size: 1.6rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .show {
+            display: flex;
+        }
+        #modalOverlay {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 5;
+            position: fixed;
+        }
+        .modalBox {
+            height: 200px;
+            width: min(500px, 100%);
+            background-color: white;
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="card">
+            <p>Please don't click this button!</p>
+            <button>THE BUTTON👀</button>
+        </div>
+        <div id="modalOverlay" class="hidden">
+            <div class="modalBox">
+                <p>HELLO WORLD!</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        let opened = false;
+
+        const overlay = document.getElementById("modalOverlay");
+        const button = document.querySelector("button");
+        const box = document.querySelector(".modalBox");
+        const card = document.getElementById("card");
+
+        function showModal() {
+            overlay.classList.remove("hidden");
+            overlay.classList.add("show");
+        }
+        function closeModal() {
+            overlay.classList.remove("show");
+            overlay.classList.add("hidden");
+            if (opened == false) {
+                card.innerHTML = "<p>Darn it... you clicked it. Whelp, hello anyways</p>"
+            }
+            opened = true;
+        }
+        button.addEventListener("click", showModal);
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        })
+
+        overlay.addEventListener("click", () => {
+            closeModal();
+        })
+        box.addEventListener("click", (event) => {
+            event.stopPropagation();
+        })
+    </script>
+</body>
+</html>
