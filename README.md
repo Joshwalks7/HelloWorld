@@ -6,7 +6,7 @@ This is a very basic site meant to practice the pattern of submitting software i
 
 Steps to build and/or run the software:
 
-1. The site should be shown live on GitHub Pages -- just use the URL ().
+1. The site should be shown live on GitHub Pages -- just use the URL (https://joshwalks7.github.io/HelloWorld/helloworld.html).
 2. In the case the site is not live, you can download the html file, and run it in your dev environment (like VS Code) using Live Server.
 3. Relax as JavaScript does the heavy lifting.
 
